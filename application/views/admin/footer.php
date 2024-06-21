@@ -5,7 +5,9 @@
 <footer class="sticky-footer bg-white">
 	<div class="container my-auto">
 		<div class="copyright text-center my-auto">
-			<span>Copyright &copy; Go Drive 2023</span>
+			<span>Copyright &copy; Go Drive
+				<?= date("Y") ?>
+			</span>
 		</div>
 	</div>
 </footer>
@@ -41,6 +43,22 @@
 	let currentYear = new Date().getFullYear();
 
 	$("#year").attr("max", currentYear);
+</script>
+<script>
+
+	function setActionForm(action) {
+		$("#reportForm").attr("action", action);
+	}
+
+	$("#reportBtnPrint").on("click", function (e) {
+		setActionForm($(this).data('action'))
+	})
+	$("#reportBtnPdf").on("click", function (e) {
+		setActionForm($(this).data('action'))
+	})
+	$("#reportBtnExcel").on("click", function (e) {
+		setActionForm($(this).data('action'))
+	})
 </script>
 
 </body>

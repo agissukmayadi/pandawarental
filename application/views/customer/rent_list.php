@@ -49,7 +49,7 @@
 										</td>
 									</tr>
 									<tr>
-										<td width="200px"><strong>Merk</strong></td>
+										<td width="200px"><strong>Model</strong></td>
 										<td>:</td>
 										<td>
 											<?= $rent->merk ?>
@@ -91,7 +91,21 @@
 									</h5>
 									<h5>
 										Status :
-										<?= ucwords(strtolower($rent->status)) ?>
+										<span class="badge <?php
+										if ($rent->status == 'PENDING') {
+											echo "bg-secondary";
+										} elseif ($rent->status == 'PAID' || $rent->status == 'PICKED UP') {
+											echo "bg-info";
+										} elseif ($rent->status == 'SUCCESS') {
+											echo "bg-success";
+										} elseif ($rent->status == 'INVALID PAYMENT' || $rent->status == 'INVALID LICENSE') {
+											echo "bg-danger";
+										} else {
+											echo "bg-info";
+										}
+										?>">
+											<?= ucwords(strtolower($rent->status)) ?>
+										</span>
 									</h5>
 								</div>
 							</div>

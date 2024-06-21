@@ -5,7 +5,9 @@
 <footer class="sticky-footer bg-white">
 	<div class="container my-auto">
 		<div class="copyright text-center my-auto">
-			<span>Copyright &copy; Go Drive 2023</span>
+			<span>Copyright &copy; Pandawa Rental
+				<?= date("Y") ?>
+			</span>
 		</div>
 	</div>
 </footer>

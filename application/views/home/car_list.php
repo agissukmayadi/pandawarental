@@ -1,25 +1,29 @@
 <!-- ======= Hero Section ======= -->
 <div class="d-flex py-3 section-bg">
 	<div class="container" data-aos="zoom-out" data-aos-delay="100">
-		<form action="<?= base_url("home/car_list") ?>" method="GET"
+		<form action="<?= base_url("home/car_list") ?>" method="get"
 			class="d-flex flex-column flex-md-row row-gap-2 row-gap-md-0 column-gap-md-2 align-items-md-center bg-primary p-3 p-md-2 rounded-2 shadow">
 			<div class="flex-grow-1">
-				<span class="text-white d-block d-md-none">Tanggal sewa : </span>
-				<input type="date" name="rent_date" required value="<?= $rent_date ?>" id="rent_date"
-					class="form-control form-control-sm" />
-			</div>
-			<div>
-				<span class="text-white font-weight-bold d-none d-md-block">-</span>
+				<span class="text-white d-block mb-2 ms-1">Tanggal sewa : </span>
+				<input type="date" name="rent_date" id="rent_date" required class="form-control"
+					value="<?= $rent_date ?>" />
 			</div>
 			<div class="flex-grow-1">
-				<span class="text-white d-block d-md-none">Tanggal pengembalian :
+				<span class="text-white d-block mb-2 ms-1">Tanggal Pengembalian :
 				</span>
-				<input type="date" name="return_date" required value="<?= $return_date ?>" id="return_date"
-					class="form-control form-control-sm" />
+				<input type="date" name="return_date" id="return_date" value="<?= $return_date ?>" required
+					class="form-control" />
 			</div>
-			<button class="btn btn-primary border btn-sm">
-				<i class="bi bi-search"></i> Search
-			</button>
+			<div class="align-self-end d-none d-md-block">
+				<button class="btn btn-primary border" type="submit">
+					<i class="bi bi-search"></i> Search
+				</button>
+			</div>
+			<div class="align-self-end d-block d-md-none w-100 d-grid">
+				<button class="btn btn-primary border" type="submit">
+					<i class="bi bi-search"></i> Search
+				</button>
+			</div>
 		</form>
 	</div>
 </div>

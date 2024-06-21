@@ -6,6 +6,17 @@
 		<h1 class="h3 mb-0 text-gray-800">
 			<?= $title ?>
 		</h1>
+		<div>
+			<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+				href="<?= base_url("admin/generate_report_car_print") ?>"><i
+					class="fas fa-print fa-sm text-white-50"></i> Print</a>
+			<a class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"
+				href="<?= base_url("admin/generate_report_car_pdf") ?>"><i
+					class="fas fa-file-pdf fa-sm text-white-50"></i> PDF</a>
+			<a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"
+				href="<?= base_url("admin/generate_report_car_excel") ?>"><i
+					class="fas fa-file-excel fa-sm text-white-50"></i> Excel</a>
+		</div>
 	</div>
 
 	<!-- DataTales Example -->
@@ -27,7 +38,7 @@
 							<th>No</th>
 							<th>Kode Mobil</th>
 							<th>Plat Nomor</th>
-							<th>Merk</th>
+							<th>Model</th>
 							<th>Tipe</th>
 							<th>Transmisi</th>
 							<th>Jumlah Kursi</th>

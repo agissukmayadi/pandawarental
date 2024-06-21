@@ -28,6 +28,29 @@ class Admin extends CI_Controller
 		$this->load->view("admin/index", $data);
 		$this->load->view("admin/footer", $data);
 	}
+	public function generate_report()
+	{
+		$month = (int) $this->input->post('month'); // format : 1,2,3,4,5,6,7,8,9,10,11,12
+		$year = (int) $this->input->post('year'); // 2024, 2023, 2022, ...
+		$data['laporan'] = $this->ModelRent->get_for_pdf($month, $year)->result_array();
+		var_dump($data);
+		die();
+		// $this->load->library('dompdf_gen');
+		$sroot = $_SERVER['DOCUMENT_ROOT'];
+		include $sroot . "/godrive/application/third_party/dompdf/autoload.inc.php";
+		$dompdf = new Dompdf\Dompdf();
+		$this->load->view('admin/laporan_sewa_pdf', $data);
+		$paper_size = 'A4'; // ukuran kertas
+		$orientation = 'landscape'; //tipe format kertas potrait atau landscape
+		$html = $this->output->get_output();
+		$dompdf->set_paper($paper_size, $orientation);
+		//Convert to PDF
+		$dompdf->load_html($html);
+		$dompdf->render();
+		$dompdf->stream("laporan data penyewaan.pdf", array('Attachment' => 0));
+		// nama file pdf yang di hasilkan
+	}
+
 
 	public function rent_list()
 	{
@@ -61,6 +84,41 @@ class Admin extends CI_Controller
 		$this->load->view("admin/topbar", $data);
 		$this->load->view("admin/rent_detail", $data);
 		$this->load->view("admin/footer", $data);
+	}
+
+	public function generate_report_rent_print()
+	{
+		$month = (int) $this->input->post('month');
+		$year = (int) $this->input->post('year');
+		$data['rents'] = $this->ModelRent->getWhereMonth($month, $year)->result();
+		$this->load->view('admin/report_rent_print', $data);
+	}
+
+	public function generate_report_rent_pdf()
+	{
+		$month = (int) $this->input->post('month');
+		$year = (int) $this->input->post('year');
+		$data['rents'] = $this->ModelRent->getWhereMonth($month, $year)->result();
+		$sroot = $_SERVER['DOCUMENT_ROOT'];
+		include $sroot . "/pandawarental/application/third_party/dompdf/autoload.inc.php";
+		$dompdf = new Dompdf\Dompdf();
+		$this->load->view('admin/report_rent_pdf', $data);
+		$paper_size = 'A4';
+		$orientation = 'landscape';
+		$html = $this->output->get_output();
+		$dompdf->set_paper($paper_size, $orientation);
+		//Convert to PDF
+		$dompdf->load_html($html);
+		$dompdf->render();
+		$dompdf->stream("Laporan data sewa.pdf", array('Attachment' => 0));
+	}
+
+	public function generate_report_rent_excel()
+	{
+		$month = (int) $this->input->post('month');
+		$year = (int) $this->input->post('year');
+		$data['rents'] = $this->ModelRent->getWhereMonth($month, $year)->result();
+		$this->load->view('admin/report_rent_excel', $data);
 	}
 
 	public function user_list()
@@ -211,6 +269,35 @@ class Admin extends CI_Controller
 				</button>
 				</div>');
 		redirect("admin/user_list");
+	}
+
+	public function generate_report_user_print()
+	{
+		$data['users'] = $this->ModelUser->get()->result();
+		$this->load->view('admin/report_user_print', $data);
+	}
+
+	public function generate_report_user_excel()
+	{
+		$data['users'] = $this->ModelUser->get()->result();
+		$this->load->view('admin/report_user_excel', $data);
+	}
+
+	public function generate_report_user_pdf()
+	{
+		$data['users'] = $this->ModelUser->get()->result();
+		$sroot = $_SERVER['DOCUMENT_ROOT'];
+		include $sroot . "/pandawarental/application/third_party/dompdf/autoload.inc.php";
+		$dompdf = new Dompdf\Dompdf();
+		$this->load->view('admin/report_user_pdf', $data);
+		$paper_size = 'A4';
+		$orientation = 'landscape';
+		$html = $this->output->get_output();
+		$dompdf->set_paper($paper_size, $orientation);
+		//Convert to PDF
+		$dompdf->load_html($html);
+		$dompdf->render();
+		$dompdf->stream("Laporan data user.pdf", array('Attachment' => 0));
 	}
 
 	public function car_list()

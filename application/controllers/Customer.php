@@ -46,7 +46,7 @@ class Customer extends CI_Controller
 			"numeric" => "%s harus berupa angka",
 		]);
 
-		$this->form_validation->set_rules("license_number", "Nomor Rekening", "required|trim|numeric|min_length[8]|max_length[16]", [
+		$this->form_validation->set_rules("license_number", "Nomor SIM", "required|trim|numeric|min_length[8]|max_length[16]", [
 			"required" => "%s tidak boleh kosong",
 			"numeric" => "%s harus berupa angka",
 			"min_length" => "%s terlalu pendek",
@@ -56,16 +56,18 @@ class Customer extends CI_Controller
 
 		if (!$this->form_validation->run()) {
 			$car_id = $this->session->userdata("car_id");
-			$rent_date = $this->session->userdata("rent_date");
-			$return_date = $this->session->userdata("return_date");
+			$rent_date = new DateTime($this->session->userdata("rent_date"));
+			$return_date = new DateTime($this->session->userdata("return_date"));
 			$rent_cost = $this->session->userdata("rent_cost");
+			$rent_duration = $rent_date->diff($return_date)->days;
 			$data = [
 				"user" => $this->ModelUser->getWhere(["email" => $this->session->userdata("email")])->row(),
 				"car" => $this->ModelCar->getById($car_id)->row(),
-				"rent_date" => $rent_date,
-				"return_date" => $return_date,
+				"rent_date" => $this->session->userdata("rent_date"),
+				"return_date" => $this->session->userdata("return_date"),
 				"rent_cost" => $rent_cost,
-				"banks" => $this->ModelBank->get()->result()
+				"banks" => $this->ModelBank->get()->result(),
+				"rent_duration" => $rent_duration
 			];
 			$this->load->view("home/header", $data);
 			$this->load->view('customer/rent', $data);

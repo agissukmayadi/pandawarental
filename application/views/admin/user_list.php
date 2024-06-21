@@ -6,6 +6,17 @@
 		<h1 class="h3 mb-0 text-gray-800">
 			<?= $title ?>
 		</h1>
+		<div>
+			<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+				href="<?= base_url("admin/generate_report_user_print") ?>"><i
+					class="fas fa-print fa-sm text-white-50"></i> Print</a>
+			<a class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"
+				href="<?= base_url("admin/generate_report_user_pdf") ?>"><i
+					class="fas fa-file-pdf fa-sm text-white-50"></i> PDF</a>
+			<a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"
+				href="<?= base_url("admin/generate_report_user_excel") ?>"><i
+					class="fas fa-file-excel fa-sm text-white-50"></i> Excel</a>
+		</div>
 	</div>
 
 	<!-- DataTales Example -->
@@ -30,6 +41,7 @@
 							<th>Email</th>
 							<th>Alamat</th>
 							<th>Role</th>
+							<th>Tanggal Terdaftar</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -56,6 +68,13 @@
 								</td>
 								<td>
 									<?= $user->role ?>
+								</td>
+								<td>
+									<?php
+									$date = new DateTime($user->date_created);
+
+									echo date_format($date, 'd-m-Y');
+									?>
 								</td>
 								<td class=" text-center">
 									<a href="<?= base_url("admin/user_edit/") . $user->id ?>" class="btn btn-sm btn-info"><i

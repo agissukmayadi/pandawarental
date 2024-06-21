@@ -33,6 +33,22 @@ class Employee extends CI_Controller
 		$this->load->view("employee/footer", $data);
 	}
 
+	public function list_rent_pending()
+	{
+
+		$data = [
+			"user" => $this->ModelUser->getWhere(["email" => $this->session->userdata("email")])->row(),
+			"activeLink" => "rent_pending",
+			"title" => "List Rent Pending",
+			"rents" => $this->ModelRent->getWhereStatus(["PENDING"])->result()
+		];
+		$this->load->view("employee/header", $data);
+		$this->load->view("employee/sidebar", $data);
+		$this->load->view("employee/topbar", $data);
+		$this->load->view("employee/rent_list", $data);
+		$this->load->view("employee/footer", $data);
+	}
+
 	public function rent_verification($rent_id)
 	{
 		$this->form_validation->set_rules("status", "Verifikasi", "required|trim", [
@@ -44,7 +60,7 @@ class Employee extends CI_Controller
 
 			$data = [
 				"user" => $user,
-				"activeLink" => "dashboard",
+				"activeLink" => "rent_pending",
 				"title" => "Rent Verification",
 
 				"rent" => $this->ModelRent->getDetail($rent_id)->row()
@@ -66,8 +82,24 @@ class Employee extends CI_Controller
 					<span aria-hidden="true">&times;</span>
 				</button>
 		  		</div>');
-			redirect("employee");
+			redirect("employee/list_rent_pending");
 		}
+	}
+
+	public function list_rent_paid()
+	{
+
+		$data = [
+			"user" => $this->ModelUser->getWhere(["email" => $this->session->userdata("email")])->row(),
+			"activeLink" => "rent_paid",
+			"title" => "List Rent Paid",
+			"rents" => $this->ModelRent->getWhereStatus(["PAID"])->result()
+		];
+		$this->load->view("employee/header", $data);
+		$this->load->view("employee/sidebar", $data);
+		$this->load->view("employee/topbar", $data);
+		$this->load->view("employee/rent_list", $data);
+		$this->load->view("employee/footer", $data);
 	}
 
 	public function rent_pickup($rent_id)
@@ -81,7 +113,7 @@ class Employee extends CI_Controller
 
 			$data = [
 				"user" => $user,
-				"activeLink" => "dashboard",
+				"activeLink" => "rent_paid",
 				"title" => "Rent Pick Up",
 
 				"rent" => $this->ModelRent->getDetail($rent_id)->row()
@@ -103,8 +135,24 @@ class Employee extends CI_Controller
 					<span aria-hidden="true">&times;</span>
 				</button>
 		  		</div>');
-			redirect("employee");
+			redirect("employee/list_rent_paid");
 		}
+	}
+
+	public function list_rent_picked_up()
+	{
+
+		$data = [
+			"user" => $this->ModelUser->getWhere(["email" => $this->session->userdata("email")])->row(),
+			"activeLink" => "rent_picked_up",
+			"title" => "List Rent Picked Up",
+			"rents" => $this->ModelRent->getWhereStatus(["PICKED UP"])->result()
+		];
+		$this->load->view("employee/header", $data);
+		$this->load->view("employee/sidebar", $data);
+		$this->load->view("employee/topbar", $data);
+		$this->load->view("employee/rent_list", $data);
+		$this->load->view("employee/footer", $data);
 	}
 
 	public function rent_return($rent_id)
@@ -122,7 +170,7 @@ class Employee extends CI_Controller
 
 			$data = [
 				"user" => $user,
-				"activeLink" => "dashboard",
+				"activeLink" => "rent_picked_up",
 				"title" => "Rent Return",
 
 				"rent" => $this->ModelRent->getDetail($rent_id)->row()
@@ -149,8 +197,40 @@ class Employee extends CI_Controller
 					<span aria-hidden="true">&times;</span>
 				</button>
 		  		</div>');
-			redirect("employee");
+			redirect("employee/list_rent_picked_up");
 		}
+	}
+
+	public function list_rent_success()
+	{
+
+		$data = [
+			"user" => $this->ModelUser->getWhere(["email" => $this->session->userdata("email")])->row(),
+			"activeLink" => "rent_success",
+			"title" => "List Rent Success",
+			"rents" => $this->ModelRent->getWhereStatus(["SUCCESS"])->result()
+		];
+		$this->load->view("employee/header", $data);
+		$this->load->view("employee/sidebar", $data);
+		$this->load->view("employee/topbar", $data);
+		$this->load->view("employee/rent_list", $data);
+		$this->load->view("employee/footer", $data);
+	}
+
+	public function list_rent_invalid()
+	{
+
+		$data = [
+			"user" => $this->ModelUser->getWhere(["email" => $this->session->userdata("email")])->row(),
+			"activeLink" => "rent_invalid",
+			"title" => "List Rent Invalid",
+			"rents" => $this->ModelRent->getWhereStatus(["INVALID PAYMENT", "INVALID LICENSE"])->result()
+		];
+		$this->load->view("employee/header", $data);
+		$this->load->view("employee/sidebar", $data);
+		$this->load->view("employee/topbar", $data);
+		$this->load->view("employee/rent_list", $data);
+		$this->load->view("employee/footer", $data);
 	}
 
 	public function rent_detail($rent_id)
@@ -160,7 +240,7 @@ class Employee extends CI_Controller
 		$data = [
 			"user" => $user,
 			"activeLink" => "dashboard",
-			"title" => "Dashboard",
+			"title" => "Rent Detail",
 
 			"rent" => $this->ModelRent->getDetail($rent_id)->row()
 		];

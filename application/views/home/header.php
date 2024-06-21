@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-	<title>Go Drive</title>
+	<title>Pandawa Rental</title>
 	<meta content="" name="description" />
 	<meta content="" name="keywords" />
 
@@ -42,7 +42,7 @@
 		<div class="container d-flex justify-content-center justify-content-md-between">
 			<div class="contact-info d-flex align-items-center">
 				<i class="bi bi-envelope d-flex align-items-center"><a
-						href="mailto:contact@example.com">godrive.official@gmail.com</a></i>
+						href="mailto:contact@example.com">pandawarental@gmail.com</a></i>
 				<i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 851 5613 4922</span></i>
 			</div>
 			<div class="social-links d-none d-md-flex align-items-center">
@@ -57,7 +57,7 @@
 	<header id="header" class="d-flex align-items-center">
 		<div class="container d-flex align-items-center justify-content-between">
 			<h1 class="logo">
-				<a href="<?= base_url() ?>">GoDrive<span>.</span></a>
+				<a href="<?= base_url() ?>">Pandawa Rental<span>.</span></a>
 			</h1>
 			<nav id="navbar" class="navbar">
 				<ul>
@@ -98,7 +98,7 @@
 									<i class="bi bi-person-circle text-primary" style="font-size: 30px;"></i>
 								</a>
 								<ul>
-									<li><a href="<?= base_url("employee") ?>">Dashboard <i class="bi bi-speedometer2">
+									<li><a href="<?= base_url("employee") ?>">Dashboard <i class="bi bi-speedometer2"></i>
 									<li><a href="<?= base_url("employee/profile") ?>">Profile <i class="bi bi-person"
 												style="font-size:20px"></i></a></li>
 									<li><a href="<?= base_url("employee/logout") ?>">Logout <i class="bi bi-box-arrow-right"

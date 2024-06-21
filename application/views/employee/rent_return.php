@@ -7,73 +7,54 @@
 			<?= $title ?>
 		</h1>
 	</div>
-	<div class="card shadow mb-4">
-		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">Data</h6>
-		</div>
-		<div class="card-body">
-			<div class="container-fluid p-3">
-
-				<div class="row gy-4 align-items-center">
-
-					<div class="col-4">
-						<img src="<?= base_url("assets/img/cars/") . $rent->image ?>" alt="" class=" img-fluid">
-					</div>
-
-					<div class="col-8">
+	<div class="row mb-3 ">
+		<div class="col-lg-8 col-12 mb-3 mb-lg-0">
+			<div class="card shadow">
+				<div class="card-header">
+					<h6 class="m-0 font-weight-bold text-primary">Data Mobil</h6>
+				</div>
+				<div class="card-body">
+					<div class="container-fluid">
 						<div class="row">
-
-							<div class="col-6">
+							<div class="col-lg-4 p-4 col-12">
+								<img src="<?= base_url("assets/img/cars/") . $rent->image ?>" alt="" class=" img-fluid">
+							</div>
+							<div class="col-lg-8 col-12">
 								<h3>
-									Detail Mobil
+									<?= $rent->merk ?>
 								</h3>
 								<table>
 									<tr>
-										<td width="200px"><strong>Kode Mobil</strong></td>
-										<td>:</td>
-										<td>
-											<?= $rent->car_id ?>
-										</td>
-									</tr>
-									<tr>
-										<td width="200px"><strong>Merk</strong></td>
-										<td>:</td>
-										<td>
-											<?= $rent->merk ?>
-										</td>
-									</tr>
-									<tr>
-										<td width="200px"><strong>Tipe</strong></td>
+										<td width="180px"><strong>Tipe</strong></td>
 										<td>:</td>
 										<td>
 											<?= $rent->type ?>
 										</td>
 									</tr>
 									<tr>
-										<td width="200px"><strong>Transmisi</strong></td>
+										<td width="180px"><strong>Transmisi</strong></td>
 										<td>:</td>
 										<td>
 											<?= ucwords(strtolower($rent->transmition)) ?>
 										</td>
 									</tr>
 									<tr>
-										<td width="200px"><strong>Jumlah Kursi</strong></td>
+										<td width="180px"><strong>Jumlah Kursi</strong></td>
 										<td>:</td>
 										<td>
 											<?= $rent->seat ?> Seater
 										</td>
 									</tr>
 									<tr>
-										<td width="200px"><strong>Tahun</strong></td>
+										<td width="180px"><strong>Tahun</strong></td>
 										<td>:</td>
 										<td>
 											<?= $rent->year ?>
 										</td>
 									</tr>
 									<tr>
-										<td width="200px" id="price" data-value="<?= $rent->price ?>">
-											<strong>Harga Sewa/hari</strong>
-										</td>
+										<td width="180px" id="price" data-value="<?= $rent->price ?>"><strong>Harga
+												Sewa/hari</strong></td>
 										<td>:</td>
 										<td>
 											<?= format_rupiah($rent->price) ?>
@@ -81,18 +62,21 @@
 									</tr>
 								</table>
 							</div>
-							<div class="col-6">
-								<h3>
-									Detail Sewa
-								</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-12 mb-3 mb-lg-0">
+			<div class="card shadow">
+				<div class="card-header">
+					<h6 class="m-0 font-weight-bold text-primary">Data Sewa</h6>
+				</div>
+				<div class="card-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
 								<table>
-									<tr>
-										<td width="200px"><strong>Tanggal Sewa</strong></td>
-										<td>:</td>
-										<td>
-											<?= $rent->rent_date ?>
-										</td>
-									</tr>
 									<tr>
 										<td width="200px"><strong>Tanggal Sewa</strong></td>
 										<td>:</td>
@@ -132,183 +116,231 @@
 									</tr>
 								</table>
 							</div>
-							<div class="col-12 d-flex justify-content-end">
-								<h5>Total Biaya :
-									<?= format_rupiah($rent->total_cost) ?>
-								</h5>
-							</div>
 						</div>
 					</div>
-
 				</div>
-
-				<hr>
-				<div class="row">
-					<div class="col-4">
-						<h5>
-							<strong>Pembayaran</strong>
-						</h5>
-						<table>
-							<tr>
-								<td width="180px"><strong>Bank Tujuan</strong></td>
-								<td>:</td>
-								<td>
-									<?= $rent->bank . " - " . $rent->bank_number . " ($rent->bank_name)" ?>
-								</td>
-							</tr>
-							<tr>
-								<td width="180px"><strong>Nomor Rekening</strong></td>
-								<td>:</td>
-								<td>
-									<?= $rent->payment_number ?>
-								</td>
-							</tr>
-							<tr>
-								<td width="180px"><strong>Atas Nama</strong></td>
-								<td>:</td>
-								<td>
-									<?= $rent->payment_name ?>
-								</td>
-							</tr>
-							<tr>
-								<td width="180px"><strong>Total Pembayaran</strong></td>
-								<td>:</td>
-								<td>
-									<?= format_rupiah($rent->amount) ?>
-								</td>
-							</tr>
-							<tr>
-								<td width="180px"><strong>Bukti Pembayaran</strong></td>
-								<td>:</td>
-								<td>
-									<a href="#" data-toggle="modal" data-target="#payment_attachment">Lihat
-										Foto</a>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div class="col-4">
-						<h5>
-							<strong>Jaminan (SIM)</strong>
-						</h5>
-						<table>
-							<tr>
-								<td width="180px"><strong>Nomor SIM</strong></td>
-								<td>:</td>
-								<td>
-									<?= $rent->license_number ?>
-								</td>
-							</tr>
-							<tr>
-								<td width="180px"><strong>Bukti Jaminan (SIM)</strong></td>
-								<td>:</td>
-								<td>
-									<a href="#" data-toggle="modal" data-target="#license_attachment">Lihat
-										Foto</a>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div class="col-4">
-						<h5>
-							<strong>Customer</strong>
-						</h5>
-						<table>
-							<tr>
-								<td width="180px"><strong>Nama</strong></td>
-								<td>:</td>
-								<td>
-									<?= $rent->user_name ?>
-								</td>
-							</tr>
-							<tr>
-								<td width="180px"><strong>Email</strong></td>
-								<td>:</td>
-								<td>
-									<?= $rent->email ?>
-								</td>
-							</tr>
-							<tr>
-								<td width="180px"><strong>Nomor Handphone</strong></td>
-								<td>:</td>
-								<td>
-									<?= $rent->phone ?>
-								</td>
-							</tr>
-							<tr>
-								<td width="180px"><strong>Alamat</strong></td>
-								<td>:</td>
-								<td>
-									<?= $rent->address ?>
-								</td>
-							</tr>
-						</table>
-						<hr>
-						<form action="<?= current_url() ?>" method="post">
+				<div class="card-footer">
+					<div class="row">
+						<div class="col-12 d-flex justify-content-end">
 							<h5>
-								<strong>Pengembalian Mobil</strong>
+								<strong>
+									Total Biaya :
+									<?= format_rupiah($rent->total_cost) ?>
+								</strong>
 							</h5>
-							<div class="form-group">
-								<label for="actual_return_date">Tanggal Pengembalian :</label>
-								<input type="date" class="form-control" name="actual_return_date" id="actual_return_date">
-								<?= form_error("actual_return_date", "<small class='text-danger'>", "</small>") ?>
-							</div>
-							<div class="form-group">
-								<label for="late_cost">Denda Keterlambatan :</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">Rp.</span>
-									</div>
-									<input type="number" name="late_cost" id="late_cost" readonly class="form-control"
-										aria-describedby="basic-addon1">
-								</div>
-								<?= form_error("late_cost", "<small class='text-danger'>", "</small>") ?>
-							</div>
-							<button type="submit" class="btn btn-block btn-primary mt-3"
-								type="button">Pengembalian</button>
-						</form>
-						<div class="d-grid gap-2 mt-2">
-							<a href="<?= base_url("employee") ?>" class="btn btn-block btn-danger"
-								type="button">Kembali</a>
 						</div>
 					</div>
-
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<div class="col-lg-4 col-12 mb-3 mb-lg-0">
+			<div class="card shadow">
+				<div class="card-header">
+					<h6 class="m-0 font-weight-bold text-primary">Data Pembayaran</h6>
+				</div>
+				<div class="card-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
+								<table>
+									<tr>
+										<td width="180px"><strong>Bank Tujuan</strong></td>
+										<td>:</td>
+										<td>
+											<?= $rent->bank . " - " . $rent->bank_number . " ($rent->bank_name)" ?>
+										</td>
+									</tr>
+									<tr>
+										<td width="180px"><strong>Nomor Rekening</strong></td>
+										<td>:</td>
+										<td>
+											<?= $rent->payment_number ?>
+										</td>
+									</tr>
+									<tr>
+										<td width="180px"><strong>Atas Nama</strong></td>
+										<td>:</td>
+										<td>
+											<?= $rent->payment_name ?>
+										</td>
+									</tr>
+									<tr>
+										<td width="180px"><strong>Total Pembayaran</strong></td>
+										<td>:</td>
+										<td>
+											<?= format_rupiah($rent->amount) ?>
+										</td>
+									</tr>
+									<tr>
+										<td width="180px"><strong>Bukti Pembayaran</strong></td>
+										<td>:</td>
+										<td>
+											<a href="#" data-toggle="modal" data-target="#payment_attachment">Lihat
+												Foto</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-12 mb-3 mb-lg-0">
+			<div class="card shadow">
+				<div class="card-header">
+					<h6 class="m-0 font-weight-bold text-primary">Data Jaminan</h6>
+				</div>
+				<div class="card-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
+								<table>
+									<tr>
+										<td width="180px"><strong>Nomor SIM</strong></td>
+										<td>:</td>
+										<td>
+											<?= $rent->license_number ?>
+										</td>
+									</tr>
+									<tr>
+										<td width="180px"><strong>Bukti Jaminan (SIM)</strong></td>
+										<td>:</td>
+										<td>
+											<a href="#" data-toggle="modal" data-target="#license_attachment">Lihat
+												Foto</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-12">
+			<div class="card shadow">
+				<div class="card-header">
+					<h6 class="m-0 font-weight-bold text-primary">Data Customer</h6>
+				</div>
+				<div class="card-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
+								<table>
+									<tr>
+										<td width="180px"><strong>Nama</strong></td>
+										<td>:</td>
+										<td>
+											<?= $rent->user_name ?>
+										</td>
+									</tr>
+									<tr>
+										<td width="180px"><strong>Email</strong></td>
+										<td>:</td>
+										<td>
+											<?= $rent->email ?>
+										</td>
+									</tr>
+									<tr>
+										<td width="180px"><strong>Nomor Handphone</strong></td>
+										<td>:</td>
+										<td>
+											<?= $rent->phone ?>
+										</td>
+									</tr>
+									<tr>
+										<td width="180px"><strong>Alamat</strong></td>
+										<td>:</td>
+										<td>
+											<?= $rent->address ?>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<div class="col-12">
+			<div class="card shadow">
+				<div class="card-header">
+					<h6 class="m-0 font-weight-bold text-primary">Action</h6>
+				</div>
+				<div class="card-body">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
+								<form action="<?= current_url() ?>" method="post">
+									<div class="form-group">
+										<label for="actual_return_date">Tanggal Pengembalian :</label>
+										<input type="date" class="form-control" min="<?= $rent->return_date ?>"
+											name="actual_return_date" id="actual_return_date">
+										<?= form_error("actual_return_date", "<small class='text-danger'>", "</small>") ?>
+									</div>
+									<div class="form-group">
+										<label for="late_cost">Denda Keterlambatan :</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="basic-addon1">Rp.</span>
+											</div>
+											<input type="number" name="late_cost" id="late_cost" readonly
+												class="form-control" aria-describedby="basic-addon1">
+										</div>
+										<?= form_error("late_cost", "<small class='text-danger'>", "</small>") ?>
+									</div>
+									<button type="submit" class="btn btn-block btn-primary mt-3"
+										type="button">Pengembalian</button>
+								</form>
+								<div class="d-grid gap-2 mt-2">
+									<a href="<?= base_url("employee/list_rent_picked_up") ?>"
+										class="btn btn-block btn-danger" type="button">Kembali</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="license_attachment" tabindex="-1" aria-labelledby="license_attachmentLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="license_attachmentLabel">Bukti Jaminan</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<img src="<?= base_url("assets/img/payments/$rent->payment_attachment") ?>" alt=""
+						class="img-fluid">
 				</div>
 			</div>
 		</div>
 	</div>
 
-</div>
-<!-- Modal -->
-<div class="modal fade" id="license_attachment" tabindex="-1" aria-labelledby="license_attachmentLabel"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-xl">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="license_attachmentLabel">Bukti Jaminan</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<img src="<?= base_url("assets/img/payments/$rent->payment_attachment") ?>" alt="" class="img-fluid">
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="payment_attachment" tabindex="-1" aria-labelledby="payment_attachmentLabel"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-xl">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="payment_attachmentLabel">Bukti Jaminan</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<img src="<?= base_url("assets/img/payments/$rent->payment_attachment") ?>" alt="" class="img-fluid">
+	<div class="modal fade" id="payment_attachment" tabindex="-1" aria-labelledby="payment_attachmentLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="payment_attachmentLabel">Bukti Jaminan</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<img src="<?= base_url("assets/img/payments/$rent->payment_attachment") ?>" alt=""
+						class="img-fluid">
+				</div>
 			</div>
 		</div>
 	</div>

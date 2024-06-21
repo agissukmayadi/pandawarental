@@ -3,13 +3,26 @@
 	<!-- ======= Breadcrumbs Section ======= -->
 	<section class="breadcrumbs">
 		<div class="container">
-
 			<div class="d-flex justify-content-between align-items-center">
 				<h2 class=" fw-bold">Detail Sewa -
-					<?= $rent->id . " ($rent->status)" ?>
+					<?= $rent->id ?>
+					<span class="badge <?php
+					if ($rent->status == 'PENDING') {
+						echo "bg-secondary";
+					} elseif ($rent->status == 'PAID' || $rent->status == 'PICKED UP') {
+						echo "bg-info";
+					} elseif ($rent->status == 'SUCCESS') {
+						echo "bg-success";
+					} elseif ($rent->status == 'INVALID PAYMENT' || $rent->status == 'INVALID LICENSE') {
+						echo "bg-danger";
+					} else {
+						echo "bg-info";
+					}
+					?>">
+						<?= ucwords(strtolower($rent->status)) ?>
+					</span>
 				</h2>
 			</div>
-
 		</div>
 	</section><!-- Breadcrumbs Section -->
 
@@ -19,15 +32,15 @@
 
 			<div class="row gy-4 align-items-center">
 
-				<div class="col-4">
+				<div class="col-lg-4 col-12">
 					<img src="<?= base_url("assets/img/cars/") . $rent->image ?>" alt="" class=" img-fluid">
 				</div>
 
-				<div class="col-8">
+				<div class="col-lg-8 col-12">
 					<div class="portfolio-info">
 						<div class="row">
 
-							<div class="col-6">
+							<div class="col-lg-6 col-12">
 								<h3>
 									Detail Mobil
 								</h3>
@@ -40,7 +53,7 @@
 										</td>
 									</tr>
 									<tr>
-										<td width="200px"><strong>Merk</strong></td>
+										<td width="200px"><strong>Model</strong></td>
 										<td>:</td>
 										<td>
 											<?= $rent->merk ?>
@@ -83,7 +96,7 @@
 									</tr>
 								</table>
 							</div>
-							<div class="col-6">
+							<div class="col-lg-6 col-12 mt-4 mt-lg-0">
 								<h3>
 									Detail Sewa
 								</h3>
@@ -125,6 +138,7 @@
 									</tr>
 								</table>
 							</div>
+							<hr class="my-4">
 							<div class="col-12 d-flex justify-content-end">
 								<h5>Total Biaya :
 									<?= format_rupiah($rent->total_cost) ?>
@@ -138,7 +152,7 @@
 
 			<hr>
 			<div class="row">
-				<div class="col-6">
+				<div class="col-lg-6 col-12">
 					<h5>
 						<strong>Pembayaran</strong>
 					</h5>
@@ -180,7 +194,8 @@
 						</tr>
 					</table>
 				</div>
-				<div class="col-6">
+				<hr class="mt-3 d-lg-none">
+				<div class="col-lg-6 col-12">
 					<h5>
 						<strong>Jaminan (SIM)</strong>
 					</h5>

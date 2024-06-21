@@ -4,13 +4,13 @@
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col-lg-3 col-md-6 footer-contact">
-					<h3>GoDrive<span>.</span></h3>
+					<h3>Pandawa Rental<span>.</span></h3>
 					<p>
 						Jl.Pagelaran Ciomas <br />
 						Bogor, 16610<br />
 						Indonesia <br /><br />
 						<strong>Phone:</strong> +62 851 5613 49222<br />
-						<strong>Email:</strong> godrive.official@gmail.com<br />
+						<strong>Email:</strong> pandawarental@gmail.com<br />
 					</p>
 				</div>
 
@@ -30,7 +30,7 @@
 
 	<div class="container py-4 d-flex justify-content-center align-items-center">
 		<div class="copyright">
-			&copy; Copyright <strong><span>GoDrive</span></strong>. All Rights Reserved
+			&copy; Copyright <strong><span>Pandawa Rental</span></strong>. All Rights Reserved
 		</div>
 	</div>
 </footer>
@@ -84,6 +84,19 @@
 		return_date.attr("min", nextDayFormatted);
 		return_date.val(""); // Mengosongkan nilai return_date jika rent_date berubah
 	});
+	if (rent_date.val() !== null) {
+		// Ambil nilai rent_date setelah perubahan
+		var selectedDate = new Date(rent_date.val());
+
+		// Menambahkan satu hari ke nilai rent_date
+		selectedDate.setDate(selectedDate.getDate() + 1);
+
+		// Format tanggal sebagai string YYYY-MM-DD
+		var nextDayFormatted = selectedDate.toISOString().split('T')[0];
+
+		// Set atribut min pada elemen return_date
+		return_date.attr("min", nextDayFormatted);
+	}
 </script>
 
 <script>

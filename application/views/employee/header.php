@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Go Drive</title>
+	<title>Pandawa Rental</title>
 	<link href="<?= base_url() ?>assets/img/godrive.png" rel="icon" />
 
 

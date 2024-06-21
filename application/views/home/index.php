@@ -5,20 +5,24 @@
 		<form action="<?= base_url("home/car_list") ?>" method="get"
 			class="d-flex flex-column flex-md-row row-gap-2 row-gap-md-0 column-gap-md-2 align-items-md-center bg-primary p-3 p-md-2 rounded-2 shadow">
 			<div class="flex-grow-1">
-				<span class="text-white d-block d-md-none">Tanggal sewa : </span>
+				<span class="text-white d-block mb-2 ms-1">Tanggal sewa : </span>
 				<input type="date" name="rent_date" id="" required class="form-control" />
 			</div>
-			<div>
-				<span class="text-white font-weight-bold d-none d-md-block">-</span>
-			</div>
 			<div class="flex-grow-1">
-				<span class="text-white d-block d-md-none">Tanggal pengembalian :
+				<span class="text-white d-block mb-2 ms-1">Tanggal Pengembalian :
 				</span>
 				<input type="date" name="return_date" id="" required class="form-control" />
 			</div>
-			<button class="btn btn-primary border" type="submit">
-				<i class="bi bi-search"></i> Search
-			</button>
+			<div class="align-self-end d-none d-md-block">
+				<button class="btn btn-primary border" type="submit">
+					<i class="bi bi-search"></i> Search
+				</button>
+			</div>
+			<div class="align-self-end d-block d-md-none w-100 d-grid">
+				<button class="btn btn-primary border" type="submit">
+					<i class="bi bi-search"></i> Search
+				</button>
+			</div>
 		</form>
 	</div>
 </section>
@@ -129,16 +133,16 @@
 				</div>
 				<div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
 					data-aos-delay="100">
-					<h3>GoDrive.</h3>
+					<h3>Pandawa Rental.</h3>
 					<p class="fst-italic">
-						GoDrive adalah perusahaan yang menawarkan layanan peminjaman
+						Pandawa Rental adalah perusahaan yang menawarkan layanan peminjaman
 						jenis kendaraan yang dapat disesuaikan dengan kebutuhan Anda,
 						mulai dari sewa kendaraan jangka pendek dan panjang untuk
 						keperluan operasional bisnis hingga sewa mobil harian dengan
 						lepas kunci untuk kebutuhan pribadi.
 					</p>
 					<p>
-						Alasan mengapa harus memilih sewa mobil di GoDrive Rentcar :
+						Alasan mengapa harus memilih sewa mobil di Pandawa Rental :
 					</p>
 					<ul>
 						<li>
@@ -183,7 +187,7 @@
 					<p>
 						Apakah Anda membutuhkan kendaraan untuk keperluan pribadi,
 						liburan keluarga, atau perjalanan bisnis? Jangan khawatir! Kami
-						di GoDrive siap memberikan solusi transportasi yang tepat untuk
+						di Pandawa Rental siap memberikan solusi transportasi yang tepat untuk
 						Anda. Dapatkan kendaraan yang Anda butuhkan dengan cepat dan
 						mudah melalui layanan rental mobil terbaik kami
 					</p>
@@ -302,7 +306,7 @@
 					<div class="info-box mb-4">
 						<i class="bx bx-envelope"></i>
 						<h3>Email Us</h3>
-						<p>godrive.official@gmail.com</p>
+						<p>pandawarental@gmail.com</p>
 					</div>
 				</div>
 

@@ -25,7 +25,7 @@
 							<?= form_error("number_plate", "<small class='col-9 text-danger'>"), "</small>" ?>
 						</div>
 						<div class="row justify-content-end mb-3">
-							<div class="col-3"><label for="merk" class="form-label">Merk</label></div>
+							<div class="col-3"><label for="merk" class="form-label">Model</label></div>
 							<div class="col-9"><input type="text" class="form-control" id="merk" name="merk"
 									value="<?= $car->merk ?>">
 							</div>

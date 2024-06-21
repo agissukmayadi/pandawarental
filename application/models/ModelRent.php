@@ -12,6 +12,17 @@ class ModelRent extends CI_Model
 		$this->db->order_by("rents.id", "DESC");
 		return $this->db->get();
 	}
+
+	public function getWhereStatus($status)
+	{
+		$this->db->select('rents.* , cars.id AS car_id, cars.merk, users.name');
+		$this->db->from('rents');
+		$this->db->join('cars', 'cars.id = rents.car_id');
+		$this->db->join('users', 'users.id = rents.user_id');
+		$this->db->where_in('rents.status', $status);
+		$this->db->order_by("rents.id", "DESC");
+		return $this->db->get();
+	}
 	public function insert($data)
 	{
 		$this->db->insert("rents", $data);
@@ -77,5 +88,18 @@ class ModelRent extends CI_Model
 		$this->db->from("rents");
 		$this->db->where("status", "SUCCESS");
 		return $this->db->count_all_results();
+	}
+
+	public function getWhereMonth($month, $year)
+	{
+		$this->db->select('rents.* , cars.id AS car_id, cars.merk, users.name');
+		$this->db->from('rents');
+		$this->db->where('MONTH(rents.rent_date)', $month);
+		$this->db->where('YEAR(rents.rent_date)', $year);
+		$this->db->where('rents.status', 'SUCCESS');
+		$this->db->join('cars', 'cars.id = rents.car_id');
+		$this->db->join('users', 'users.id = rents.user_id');
+		$this->db->order_by("rents.id", "DESC");
+		return $this->db->get();
 	}
 }

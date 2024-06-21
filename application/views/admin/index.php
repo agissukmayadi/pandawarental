@@ -6,8 +6,74 @@
 		<h1 class="h3 mb-0 text-gray-800">
 			<?= $title ?>
 		</h1>
-		<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-				class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+		<div>
+			<button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal"
+				data-target="#exampleModal"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</button>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Generate Laporan Penyewaan</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form action="<?= base_url("admin/generate_report") ?>" method="post">
+							<div class="row">
+								<div class="form-group col-6">
+									<label for="exampleFormControlSelect1">Pilih Bulan</label>
+									<select class="form-control" name="month" required>
+										<option value="" selected disabled>Pilih Bulan</option>
+										<?php
+										$months = [
+											1 => 'Januari',
+											2 => 'Februari',
+											3 => 'Maret',
+											4 => 'April',
+											5 => 'Mei',
+											6 => 'Juni',
+											7 => 'Juli',
+											8 => 'Agustus',
+											9 => 'September',
+											10 => 'Oktober',
+											11 => 'November',
+											12 => 'Desember'
+										];
+										foreach ($months as $num => $name) {
+											?>
+											<option value="<?= $num ?>"><?= $name ?></option>
+											<?php
+										}
+										?>
+									</select>
+								</div>
+								<div class="form-group col-6">
+									<label for="exampleFormControlSelect1">Pilih Tahun</label>
+									<select class="form-control" name="year" required>
+										<option value="" selected disabled>Pilih Tahun</option>
+										<?php
+										for ($i = date('Y') - 5; $i <= date('Y'); $i++) {
+											?>
+											<option value="<?= $i ?>"><?= $i ?></option>
+											<?php
+										}
+										?>
+									</select>
+								</div>
+							</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Generate</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!-- Content Row -->

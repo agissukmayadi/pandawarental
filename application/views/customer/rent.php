@@ -17,17 +17,17 @@
 
 			<div class="row gy-4 align-items-center">
 
-				<div class="col-4">
+				<div class="col-12 col-lg-4">
 					<img src="<?= base_url("assets/img/cars/") . $car->image ?>" alt="" class=" img-fluid">
 				</div>
 
-				<div class="col-8">
+				<div class="col-12 col-lg-8">
 					<div class="portfolio-info">
 						<div class="row">
 							<h3>
 								<?= $car->merk ?>
 							</h3>
-							<div class="col-6">
+							<div class="col-12 col-lg-6">
 								<table>
 									<tr>
 										<td width="180px"><strong>Tipe</strong></td>
@@ -66,10 +66,10 @@
 									</tr>
 								</table>
 							</div>
-							<div class="col-6">
+							<div class=" col-12 col-lg-6 mt-4 mt-lg-0">
 								<table>
 									<tr>
-										<td width="180px"><strong>Tanggal Sewa</strong></td>
+										<td width=" 180px"><strong>Tanggal Sewa</strong></td>
 										<td>:</td>
 										<td>
 											<?= $rent_date ?>
@@ -82,9 +82,16 @@
 											<?= $return_date ?>
 										</td>
 									</tr>
+									<tr>
+										<td width="180px"><strong>Lama Pinjam</strong></td>
+										<td>:</td>
+										<td>
+											<?= $rent_duration ?> Hari
+										</td>
+									</tr>
 								</table>
 							</div>
-							<hr class="my-2">
+							<hr class="my-3">
 							<div class="col d-flex justify-content-end">
 								<h5>
 									<strong>TOTAL :
@@ -99,8 +106,9 @@
 			</div>
 
 			<hr>
+
 			<div class="row">
-				<div class="col-6">
+				<div class="col-12 col-lg-6">
 					<h5>
 						<strong>Pembayaran</strong>
 					</h5>
@@ -159,7 +167,10 @@
 
 						</div>
 				</div>
-				<div class="col-6">
+
+				<hr class="d-block d-lg-none mt-3">
+
+				<div class="col-12 col-lg-6">
 					<h5>
 						<strong>Jaminan (SIM)</strong>
 					</h5>
